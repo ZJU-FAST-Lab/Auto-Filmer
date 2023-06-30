@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>gui</name>
+  <version>0.0.0</version>
+  <description>The GUI package</description>
+
+  <maintainer email="zhiwei@todo.todo">zhiwei</maintainer>
+
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <!-- Commonly used license strings: -->
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>quadrotor_msgs</depend>
+
+</package>

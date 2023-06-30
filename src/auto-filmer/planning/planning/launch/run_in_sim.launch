@@ -1,0 +1,113 @@
+<launch>
+      <!-- size of map, change the size inflate x, y, z according to your application -->
+    <arg name="map_size_x"/>
+    <arg name="map_size_y"/>
+    <arg name="map_size_z"/>
+    <arg name="init_x"/>
+    <arg name="init_y"/>
+    <arg name="init_z"/>
+    <arg name="drone_id"/>
+    <!-- topic of your odometry such as VIO or LIO -->
+    <arg name="odom_topic"/>
+    <arg name="target_odom"/>
+
+    <!-- mapping -->
+    <include file="$(find mapping)/launch/mapping.launch">
+        <arg name="drone_id" value="$(arg drone_id)"/>
+        <arg name="odom" value="$(arg odom_topic)"/>
+
+    </include>
+
+    <node name="drone_$(arg drone_id)_mapping_vis" pkg="mapping" type="mapping_vis_node">
+        <remap from="~gridmap" to="/drone_$(arg drone_id)_gridmap"/>
+        <remap from="~gridmap_inflate" to="/drone_$(arg drone_id)_gridmap_inflate"/>
+        <remap from="~vs_gridmap" to="/drone_$(arg drone_id)/vs_gridmap"/>
+        <remap from="~vs_gridmap_inflate" to="/drone_$(arg drone_id)/vs_gridmap_inflate"/>
+        <param name="remove_floor_ceil" value="false"/>
+    </node>
+
+    <!-- use simulator -->
+    <include file="$(find uav_simulator)/launch/uav_simulator.launch">
+        <arg name="drone_id" value="$(arg drone_id)"/>
+        <arg name="map_size_x_" value="$(arg map_size_x)"/>
+        <arg name="map_size_y_" value="$(arg map_size_y)"/>
+        <arg name="map_size_z_" value="$(arg map_size_z)"/>
+        <arg name="init_x_" value="$(arg init_x)"/>
+        <arg name="init_y_" value="$(arg init_y)"/>
+        <arg name="init_z_" value="$(arg init_z)"/>
+        <arg name="odometry_topic" value="$(arg odom_topic)" />
+        <arg name="is_tracker" value="true"/>
+    </include>
+
+    <!-- planning -->
+    <node pkg="nodelet" type="nodelet" name="drone_$(arg drone_id)_planning" args="load planning/Nodelet manager" output="screen">
+      <remap from="~odom" to="/drone_$(arg drone_id)_$(arg odom_topic)"/>
+      <remap from="~gridmap_inflate" to="/drone_$(arg drone_id)_gridmap_inflate"/>
+      <remap from="~heartbeat" to="drone_$(arg drone_id)/heartbeat"/>
+      <remap from="~trajectory" to="drone_$(arg drone_id)/trajectory"/>
+      <remap from="~replanState" to="replanState"/>
+      <remap from="~target" to="$(arg target_odom)"/>
+      <remap from="~triger" to="/move_base_simple/goal"/>
+      <remap from="~shot" to="/drone_$(arg drone_id)/shotparams"/>
+      <remap from="~gimbal" to="drone_$(arg drone_id)/gimbal_state" />
+
+      <param name="plan_hz" value="10"/>
+
+      <param name="K" value="8"/>
+      <param name="vmax" value="4.0"/>
+      <param name="amax" value="6.0"/> 
+      <param name="ratemax" value="1.0"/>
+      <param name="rate_max_frame" value="0.4"/> <!-- about 12 degree/s-->
+      <param name="rhoT" value="100.0"/>
+      <param name="rhoP" value="1000.0"/> <!-- 10000.0-->
+      <param name="rhoV" value="1000.0"/>
+      <param name="rhoA" value="1000.0"/>
+      <param name="rhoOmg" value="1000.0"/> <!-- 1000.0 --> 
+      <param name="rhoSmooth" value="1.0" />
+      <param name="rhoAngleSmooth" value="1.0" /> <!-- 10.0-->
+      <param name="rhoMapping" value="0.0"/> <!-- 10.0, 200.0 -->
+      <param name="rhoNoKilling" value="1000.0"/>
+      <param name="rhoViewPos" value="100.0"/> <!-- 1000.0-->
+      <param name="rhoVisibilityPos" value="50000.0"/> <!-- 50000.0 -->
+      <param name="rhoVisibilityVel" value="10000.0"/> <!-- 10000.0 -->
+      <param name="rhoOcclusion" value="1000.0"/> 
+      <param name="alpha_clearance" value="0.3"/>   <!-- 17.2 degrees-->
+      <param name="clearance_d" value="0.5"/> <!-- 0.5-->
+      <param name="tolerance_d" value="0.3"/> <!-- less than clearance_d--> <!-- 0.3-->
+      <param name="kill_d" value="1.0" />
+      <param name="tracking_dist" value="2.6"/>
+      <param name="tracking_dur" value="3.0"/>
+      <param name="tracking_dt" value="0.2"/>
+      <param name="debug" value="false"/>
+      <param name="fake" value="false"/>
+
+      <!-- shot param -->
+      <param name="min_dis" value="2.0"/>
+      <param name="max_dis" value="5.0"/>
+      <!-- balance distance and view angle -->
+      <param name="path/lambda_cost" value="1.0"/>
+      <param name="path/lambda_theta" value="1.7"/> <!-- 1.5-->
+      <param name="path/lambda_z" value="3.0" />
+
+      <param name="prediction/rho_a" value="1.0"/>
+      <param name="prediction/vmax" value="4.0"/>
+      <!-- camera parameters -->
+      <rosparam command="load" file="$(find local_sensing_node)/params/camera.yaml"/>
+
+    </node>
+
+    <node pkg="planning" name="drone_$(arg drone_id)_traj_server" type="traj_server" output="screen">
+      <remap from="~position_cmd" to="drone_$(arg drone_id)_planning/pos_cmd"/>
+      <remap from="~trajectory" to="drone_$(arg drone_id)/trajectory"/>
+      <remap from="~heartbeat" to="drone_$(arg drone_id)/heartbeat"/>
+      <remap from="~gimbal_cmd" to="drone_$(arg drone_id)/gimbal_cmd" />
+      <param name="time_forward" value="1.0" type="double"/>
+    </node>
+
+    <node pkg="gimbal_simulator" name="drone_$(arg drone_id)_gimbal" type="gimbal_simulator" output="screen">
+        <param name="init_theta" value="3.14" /> 
+        <remap from="~gimbal_cmd" to="drone_$(arg drone_id)/gimbal_cmd"/>
+        <remap from="~gimbal_state" to="drone_$(arg drone_id)/gimbal_state" />
+        <remap from="~odom" to="/drone_$(arg drone_id)_$(arg odom_topic)"/>
+    </node>
+</launch>

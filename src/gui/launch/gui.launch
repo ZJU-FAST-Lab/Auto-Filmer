@@ -1,0 +1,8 @@
+<launch>
+<!-- GUI-->
+    <node pkg="gui" name="gui_node" type="gui.py" output="screen">
+        <!-- <remap from="image" to="/usb_cam/image_raw"/> -->
+	    <remap from="image" to="/yolov5trt/img_pub"/>
+        <remap from="shot" to="/shotparams"/>
+    </node>
+</launch>

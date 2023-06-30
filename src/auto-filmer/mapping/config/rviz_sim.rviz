@@ -1,0 +1,559 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 0
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /target1
+        - /target1/mapping1/inflate_map1
+        - /drone11
+        - /drone11/mapping1
+        - /debug1
+      Splitter Ratio: 0.46234309673309326
+    Tree Height: 568
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz/Time
+    Name: Time
+    SyncMode: 0
+    SyncSource: world_map
+Preferences:
+  PromptSaveOnExit: true
+Toolbars:
+  toolButtonStyle: 2
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 1
+      Class: rviz/Axes
+      Enabled: false
+      Length: 10
+      Name: Axes
+      Radius: 0.10000000149011612
+      Reference Frame: <Fixed Frame>
+      Show Trail: false
+      Value: false
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 50
+      Reference Frame: world
+      Value: true
+    - Alpha: 0.009999999776482582
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 4.400000095367432
+        Min Value: 0
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 136; 138; 133
+      Color Transformer: FlatColor
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: world_map
+      Position Transformer: XYZ
+      Queue Size: 1
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.20000000298023224
+      Style: Boxes
+      Topic: /global_map
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Class: rviz/Group
+      Displays:
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 0.10000000149011612
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 7.150000095367432
+                Min Value: -11.149999618530273
+                Value: true
+              Axis: X
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 114; 159; 207
+              Color Transformer: FlatColor
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Min Color: 0; 0; 0
+              Name: inflate_map
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.20000000298023224
+              Style: Boxes
+              Topic: /drone_0_ego_planner_node/grid_map/occupancy_inflate
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+          Enabled: false
+          Name: mapping
+        - Class: rviz/Group
+          Displays:
+            - Class: rviz/Marker
+              Enabled: true
+              Marker Topic: /drone_0_ego_planner_node/optimal_list
+              Name: traj
+              Namespaces:
+                {}
+              Queue Size: 100
+              Value: true
+          Enabled: false
+          Name: planning
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 1
+              Buffer Length: 1
+              Class: rviz/Path
+              Color: 0; 0; 0
+              Enabled: false
+              Head Diameter: 0.30000001192092896
+              Head Length: 0.20000000298023224
+              Length: 0.30000001192092896
+              Line Style: Billboards
+              Line Width: 0.029999999329447746
+              Name: Path
+              Offset:
+                X: 0
+                Y: 0
+                Z: 0
+              Pose Color: 255; 85; 255
+              Pose Style: None
+              Queue Size: 10
+              Radius: 0.029999999329447746
+              Shaft Diameter: 0.10000000149011612
+              Shaft Length: 0.10000000149011612
+              Topic: /drone_0_odom_visualization/path
+              Unreliable: false
+              Value: false
+            - Alpha: 1
+              Axes Length: 1
+              Axes Radius: 0.10000000149011612
+              Class: rviz/Pose
+              Color: 64; 83; 191
+              Enabled: true
+              Head Length: 0.30000001192092896
+              Head Radius: 0.30000001192092896
+              Name: Pose
+              Queue Size: 10
+              Shaft Length: 1
+              Shaft Radius: 0.10000000149011612
+              Shape: Arrow
+              Topic: /drone_0_odom_visualization/pose
+              Unreliable: false
+              Value: true
+            - Class: rviz/Marker
+              Enabled: true
+              Marker Topic: /drone_0_odom_visualization/robot
+              Name: drone
+              Namespaces:
+                mesh: true
+              Queue Size: 100
+              Value: true
+          Enabled: true
+          Name: odom_vis
+      Enabled: true
+      Name: target
+    - Class: rviz/Group
+      Displays:
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 1
+              Buffer Length: 1
+              Class: rviz/Path
+              Color: 245; 121; 0
+              Enabled: true
+              Head Diameter: 0.30000001192092896
+              Head Length: 0.20000000298023224
+              Length: 0.30000001192092896
+              Line Style: Billboards
+              Line Width: 0.07000000029802322
+              Name: traj
+              Offset:
+                X: 0
+                Y: 0
+                Z: 0
+              Pose Color: 255; 85; 255
+              Pose Style: None
+              Queue Size: 10
+              Radius: 0.029999999329447746
+              Shaft Diameter: 0.10000000149011612
+              Shaft Length: 0.10000000149011612
+              Topic: /drone_1_planning/traj
+              Unreliable: false
+              Value: true
+            - Alpha: 0.20000000298023224
+              BoundColor: 255; 0; 0
+              Class: decomp_rviz_plugins/PolyhedronArray
+              Enabled: false
+              MeshColor: 0; 170; 255
+              Name: view region
+              Queue Size: 10
+              Scale: 0.10000000149011612
+              State: Mesh
+              Topic: /drone_1_planning/view_region
+              Unreliable: false
+              Value: false
+              VsColor: 0; 255; 0
+              VsScale: 1
+            - Alpha: 1
+              Buffer Length: 1
+              Class: rviz/Path
+              Color: 204; 0; 0
+              Enabled: false
+              Head Diameter: 0.30000001192092896
+              Head Length: 0.20000000298023224
+              Length: 0.30000001192092896
+              Line Style: Billboards
+              Line Width: 0.05000000074505806
+              Name: astar
+              Offset:
+                X: 0
+                Y: 0
+                Z: 0
+              Pose Color: 255; 85; 255
+              Pose Style: None
+              Queue Size: 10
+              Radius: 0.029999999329447746
+              Shaft Diameter: 0.10000000149011612
+              Shaft Length: 0.10000000149011612
+              Topic: /drone_1_planning/kAstar
+              Unreliable: false
+              Value: false
+          Enabled: true
+          Name: planning
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 0.009999999776482582
+              Buffer Length: 1
+              Class: rviz/Path
+              Color: 115; 210; 22
+              Enabled: false
+              Head Diameter: 0.30000001192092896
+              Head Length: 0.20000000298023224
+              Length: 0.30000001192092896
+              Line Style: Billboards
+              Line Width: 0.10000000149011612
+              Name: Path
+              Offset:
+                X: 0
+                Y: 0
+                Z: 0
+              Pose Color: 255; 85; 255
+              Pose Style: None
+              Queue Size: 10
+              Radius: 0.029999999329447746
+              Shaft Diameter: 0.10000000149011612
+              Shaft Length: 0.10000000149011612
+              Topic: /odom_visualization/path
+              Unreliable: false
+              Value: false
+            - Class: rviz/Marker
+              Enabled: true
+              Marker Topic: /drone_1_odom_visualization/robot
+              Name: drone
+              Namespaces:
+                mesh: true
+              Queue Size: 100
+              Value: true
+            - Alpha: 1
+              Axes Length: 1
+              Axes Radius: 0.10000000149011612
+              Class: rviz/Pose
+              Color: 255; 25; 0
+              Enabled: true
+              Head Length: 0.30000001192092896
+              Head Radius: 0.30000001192092896
+              Name: Pose
+              Queue Size: 10
+              Shaft Length: 1
+              Shaft Radius: 0.10000000149011612
+              Shape: Arrow
+              Topic: /drone_1_odom_visualization/pose
+              Unreliable: false
+              Value: true
+            - Class: rviz/MarkerArray
+              Enabled: true
+              Marker Topic: /drone_1_gimbal/fov_visual
+              Name: fov_gimbal
+              Namespaces:
+                fov_edges: true
+                fov_nodes: true
+              Queue Size: 100
+              Value: true
+            - Class: rviz/MarkerArray
+              Enabled: false
+              Marker Topic: /drone_1_odom_visualization/fov_visual
+              Name: fov_depth
+              Namespaces:
+                {}
+              Queue Size: 100
+              Value: false
+          Enabled: true
+          Name: odom_vis
+        - Class: rviz/Group
+          Displays:
+            - Alpha: 0.5
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 2.7750000953674316
+                Min Value: -0.675000011920929
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 136; 138; 133
+              Color Transformer: FlatColor
+              Decay Time: 0
+              Enabled: false
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Min Color: 0; 0; 0
+              Name: local_map
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.15000000596046448
+              Style: Boxes
+              Topic: /drone_1/vs_gridmap
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: false
+            - Alpha: 0.5
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 5
+                Min Value: -5
+                Value: false
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz/PointCloud2
+              Color: 114; 159; 207
+              Color Transformer: AxisColor
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Min Color: 0; 0; 0
+              Name: gridmap_inflate
+              Position Transformer: XYZ
+              Queue Size: 10
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.15000000596046448
+              Style: Boxes
+              Topic: /drone_1/vs_gridmap_inflate
+              Unreliable: false
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+          Enabled: true
+          Name: mapping
+      Enabled: true
+      Name: drone1
+    - Class: rviz/Group
+      Displays:
+        - Class: rviz/Marker
+          Enabled: true
+          Marker Topic: /drone0/planning/target_vel
+          Name: Marker
+          Namespaces:
+            {}
+          Queue Size: 100
+          Value: true
+        - Class: rviz/Marker
+          Enabled: true
+          Marker Topic: /drone0/planning/drone_vel
+          Name: Marker
+          Namespaces:
+            {}
+          Queue Size: 100
+          Value: true
+        - Alpha: 1
+          Buffer Length: 1
+          Class: rviz/Path
+          Color: 25; 255; 0
+          Enabled: true
+          Head Diameter: 0.30000001192092896
+          Head Length: 0.20000000298023224
+          Length: 0.30000001192092896
+          Line Style: Lines
+          Line Width: 0.029999999329447746
+          Name: Path
+          Offset:
+            X: 0
+            Y: 0
+            Z: 0
+          Pose Color: 255; 85; 255
+          Pose Style: None
+          Queue Size: 10
+          Radius: 0.029999999329447746
+          Shaft Diameter: 0.10000000149011612
+          Shaft Length: 0.10000000149011612
+          Topic: /drone0/planning/corridor_path
+          Unreliable: false
+          Value: true
+      Enabled: false
+      Name: debug
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /drone_1/usb_camera
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 255; 0; 0
+      Enabled: false
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: target_path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Queue Size: 10
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /target_odom_visualization/path
+      Unreliable: false
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 239; 41; 41
+      Color Transformer: FlatColor
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.10000000149011612
+      Style: Boxes
+      Topic: /drone_0_ego_planner_node/grid_map/occupancy_inflate
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+  Enabled: true
+  Global Options:
+    Background Color: 255; 255; 255
+    Default Light: true
+    Fixed Frame: world
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+    - Class: rviz/Measure
+    - Class: rviz/SetInitialPose
+      Theta std deviation: 0.2617993950843811
+      Topic: /initialpose
+      X std deviation: 0.5
+      Y std deviation: 0.5
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+    - Class: rviz/PublishPoint
+      Single click: true
+      Topic: /clicked_point
+  Value: true
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Distance: 51.9808349609375
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.05999999865889549
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Field of View: 0.7853981852531433
+      Focal Point:
+        X: -3.519688129425049
+        Y: -2.0102486610412598
+        Z: -1.1105763912200928
+      Focal Shape Fixed Size: false
+      Focal Shape Size: 0.05000000074505806
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 1.214796781539917
+      Target Frame: world
+      Yaw: 3.140399932861328
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 1308
+  Hide Left Dock: false
+  Hide Right Dock: false
+  Image:
+    collapsed: false
+  QMainWindow State: 000000ff00000000fd00000004000000000000025c00000483fc020000000dfb0000001200530065006c0065006300740069006f006e000000003d000003270000005c00fffffffb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afc0000003d00000275000000c900fffffffa000000010100000002fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730000000000ffffffff0000000000000000fb000000100044006900730070006c00610079007301000000000000016a0000015600fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00540065006c0065006f0070000000024d0000009e0000000000000000fb0000000e005000430044005600690065007700000002b5000000ed0000000000000000fb0000000a0064006500700074006800000002170000018b0000000000000000fb0000000c00430061006d00650072006100000002da000000c80000000000000000fb0000000a0049006d00610067006501000002b8000002080000001600fffffffb0000000a0049006d00610067006501000002da000000c80000000000000000000000010000012a00000327fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d00000327000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000780000000ebfc0100000001fb0000000a00560069006500770073030000004e00000080000002e1000001970000000300000a0000000039fc0100000002fc0000000000000a00000003bc00fffffffa000000010200000002fb0000000a0049006d0061006700650000000000ffffffff0000000000000000fb0000000800540069006d0065010000036a000000390000003900fffffffb0000000800540069006d006501000000000000045000000000000000000000079e0000048300000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Selection:
+    collapsed: false
+  Time:
+    collapsed: false
+  Views:
+    collapsed: false
+  Width: 2560
+  X: 0
+  Y: 27
